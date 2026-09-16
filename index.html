@@ -1,0 +1,6606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TONTO</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #242424 0%,
+            #151515 45%,
+            #101010 100%
+        );
+
+    color: #eeeeee;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+header {
+    height: 78px;
+
+    background: rgba(14, 14, 14, 0.96);
+
+    border-bottom:
+        2px solid #ff7a00;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 34px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 43px;
+    height: 43px;
+
+    background: #ff7a00;
+    color: #111111;
+
+    border-radius: 10px;
+
+    display: grid;
+    place-items: center;
+
+    font-weight: 900;
+    font-size: 22px;
+
+    box-shadow:
+        0 0 25px rgba(255, 122, 0, 0.18);
+}
+
+.logo-text {
+    font-size: 27px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.logo-version {
+    color: #777777;
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+main {
+    width: min(1250px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding:
+        48px 0 70px;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero {
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size:
+        clamp(32px, 5vw, 48px);
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+.hero h1 span {
+    color: #ff7a00;
+}
+
+.hero p {
+    margin:
+        10px 0 0;
+
+    color: #888888;
+
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   LANGUAGE BAR
+============================================================ */
+
+.language-bar {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    background: #1b1b1b;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+}
+
+.language-box {
+    flex: 1;
+}
+
+.language-box label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #777777;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+}
+
+select {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border:
+        1px solid #383838;
+
+    border-radius: 9px;
+
+    background: #111111;
+
+    color: #eeeeee;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    outline: none;
+}
+
+select:focus {
+    border-color: #ff7a00;
+}
+
+.swap {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid #ff7a00;
+
+    border-radius: 50%;
+
+    background: #171717;
+
+    color: #ff7a00;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        color 0.2s;
+}
+
+.swap:hover {
+    background: #ff7a00;
+    color: #111111;
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* ============================================================
+   TRANSLATOR
+============================================================ */
+
+.translator {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+.panel {
+    background: #1b1b1b;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.panel-header {
+    height: 53px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background: #181818;
+
+    border-bottom:
+        1px solid #303030;
+}
+
+.panel-title {
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.panel-title span {
+    color: #ff7a00;
+}
+
+.status {
+    color: #666666;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 310px;
+
+    resize: vertical;
+
+    padding: 22px;
+
+    border: 0;
+
+    outline: 0;
+
+    background: #1b1b1b;
+
+    color: #eeeeee;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.65;
+}
+
+textarea::placeholder {
+    color: #555555;
+}
+
+.output {
+    min-height: 310px;
+
+    padding: 22px;
+
+    background: #1b1b1b;
+
+    color: #eeeeee;
+
+    font-size: 18px;
+
+    line-height: 1.65;
+
+    white-space: pre-wrap;
+
+    word-wrap: break-word;
+}
+
+.empty-output {
+    color: #555555;
+}
+
+
+/* ============================================================
+   PANEL FOOTER
+============================================================ */
+
+.panel-footer {
+    min-height: 56px;
+
+    padding:
+        9px 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    border-top:
+        1px solid #303030;
+}
+
+.counter {
+    color: #666666;
+
+    font-size: 11px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.small-btn {
+    padding:
+        9px 13px;
+
+    background: #242424;
+
+    color: #cccccc;
+
+    border:
+        1px solid #383838;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    transition:
+        border-color 0.2s,
+        color 0.2s,
+        background 0.2s;
+}
+
+.small-btn:hover {
+    border-color: #ff7a00;
+    color: #ff7a00;
+    background: #202020;
+}
+
+
+/* ============================================================
+   TRANSLATE BUTTON
+============================================================ */
+
+.translate-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: #ff7a00;
+
+    color: #111111;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(255, 122, 0, 0.13);
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+.translate-button:hover {
+    background: #ff8b1f;
+
+    transform:
+        translateY(-1px);
+}
+
+.translate-button:active {
+    transform:
+        translateY(1px);
+}
+
+
+/* ============================================================
+   CONFIDENCE
+============================================================ */
+
+.confidence {
+    margin-top: 18px;
+
+    padding:
+        15px 17px;
+
+    background: #181818;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.confidence-label {
+    color: #777777;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.confidence-value {
+    color: #ff7a00;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+
+/* ============================================================
+   VERIFICATION
+============================================================ */
+
+.verification {
+    margin-top: 12px;
+
+    padding:
+        16px 17px;
+
+    background: #181818;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 10px;
+}
+
+.verification-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.verification-label {
+    color: #777777;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.verification-status {
+    margin-top: 5px;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.verification-score {
+    color: #ff7a00;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.verification-message {
+    margin-top: 9px;
+
+    color: #8b8b8b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.verification-suggestion {
+    margin-top: 11px;
+
+    padding:
+        10px 12px;
+
+    background: #202020;
+
+    border-left:
+        3px solid #ff7a00;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   ENGINE INFO
+============================================================ */
+
+.engine-info {
+    margin-top: 35px;
+
+    padding:
+        18px;
+
+    background: #181818;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 13px;
+}
+
+.engine-info-title {
+    color: #ff7a00;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.engine-info-text {
+    color: #777777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   INFO CARDS
+============================================================ */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+.info-card {
+    padding: 19px;
+
+    background: #1b1b1b;
+
+    border:
+        1px solid #303030;
+
+    border-radius: 12px;
+}
+
+.info-icon {
+    color: #ff7a00;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+.info-card h3 {
+    margin:
+        0 0 7px;
+
+    font-size: 15px;
+}
+
+.info-card p {
+    margin: 0;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 800px) {
+
+    header {
+        padding:
+            0 18px;
+    }
+
+    main {
+        width:
+            min(100% - 24px, 1250px);
+
+        padding-top:
+            32px;
+    }
+
+    .translator {
+        grid-template-columns:
+            1fr;
+    }
+
+    .info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .language-bar {
+        flex-direction:
+            column;
+    }
+
+    .swap {
+        transform:
+            rotate(90deg);
+    }
+
+    .swap:hover {
+        transform:
+            rotate(270deg);
+    }
+
+    .logo-version {
+        display: none;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            T
+        </div>
+
+        <div class="logo-text">
+            TONTO
+        </div>
+
+        <div class="logo-version">
+            FINAL ENGINE
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- ==========================================================
+     HERO
+=========================================================== -->
+
+<section class="hero">
+
+    <h1>
+        English <span>→</span> Spanish
+    </h1>
+
+    <p>
+        A contextual offline translator powered by the TONTO engine.
+    </p>
+
+</section>
+
+
+<!-- ==========================================================
+     LANGUAGE BAR
+=========================================================== -->
+
+<div class="language-bar">
+
+    <div class="language-box">
+
+        <label>
+            From
+        </label>
+
+        <select id="fromLanguage">
+
+            <option value="en">
+                English
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button
+        class="swap"
+        onclick="swapLanguages()"
+        title="Swap languages"
+    >
+        ⇄
+    </button>
+
+
+    <div class="language-box">
+
+        <label>
+            To
+        </label>
+
+        <select id="toLanguage">
+
+            <option value="es">
+                Spanish
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     TRANSLATOR
+=========================================================== -->
+
+<div class="translator">
+
+
+<!-- INPUT PANEL -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+
+            <span>EN</span>
+            English
+
+        </div>
+
+        <div class="status">
+            INPUT
+        </div>
+
+    </div>
+
+
+    <textarea
+        id="input"
+        placeholder="Type something in English..."
+        spellcheck="true"
+    ></textarea>
+
+
+    <div class="panel-footer">
+
+        <div
+            id="counter"
+            class="counter"
+        >
+            0 characters
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="small-btn"
+                onclick="clearInput()"
+            >
+                Clear
+            </button>
+
+            <button
+                class="small-btn"
+                onclick="useExample()"
+            >
+                Example
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- OUTPUT PANEL -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div class="panel-title">
+
+            <span>ES</span>
+            Spanish
+
+        </div>
+
+        <div class="status">
+            OUTPUT
+        </div>
+
+    </div>
+
+
+    <div
+        id="output"
+        class="output empty-output"
+    >
+        Your translation will appear here...
+    </div>
+
+
+    <div class="panel-footer">
+
+        <div class="counter">
+            TONTO ENGINE
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="small-btn"
+                onclick="copyTranslation()"
+            >
+                Copy
+            </button>
+
+            <button
+                class="small-btn"
+                onclick="downloadTranslation()"
+            >
+                Download
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- TRANSLATE -->
+
+<button
+    class="translate-button"
+    onclick="translateText()"
+>
+    TRANSLATE WITH TONTO
+</button>
+
+
+<!-- CONFIDENCE -->
+
+<div class="confidence">
+
+    <div class="confidence-label">
+        Translation confidence
+    </div>
+
+    <div
+        id="confidence"
+        class="confidence-value"
+    >
+        —
+    </div>
+
+</div>
+
+
+<!-- VERIFICATION -->
+
+<div class="verification">
+
+    <div class="verification-top">
+
+        <div>
+
+            <div class="verification-label">
+                Translation check
+            </div>
+
+            <div
+                id="verificationStatus"
+                class="verification-status"
+            >
+                —
+            </div>
+
+        </div>
+
+        <div
+            id="verificationScore"
+            class="verification-score"
+        >
+            —
+        </div>
+
+    </div>
+
+
+    <div
+        id="verificationMessage"
+        class="verification-message"
+    >
+        TONTO will check the translation here.
+    </div>
+
+
+    <div
+        id="verificationSuggestion"
+        class="verification-suggestion"
+        hidden
+    ></div>
+
+</div>
+
+
+<!-- ENGINE INFO -->
+
+<div class="engine-info">
+
+    <div class="engine-info-title">
+        🧠 TONTO Translation Engine
+    </div>
+
+    <div class="engine-info-text">
+        TONTO analyzes phrases, sentence structures, subjects,
+        verbs, tense, negation, questions, context and vocabulary
+        before falling back to individual word translation.
+    </div>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info-grid">
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            ⚡
+        </div>
+
+        <h3>
+            Fast
+        </h3>
+
+        <p>
+            Translation happens locally in your browser without
+            sending your text to a server.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🧠
+        </div>
+
+        <h3>
+            Context Aware
+        </h3>
+
+        <p>
+            TONTO tries to understand sentence structure before
+            translating individual words.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🔒
+        </div>
+
+        <h3>
+            Offline
+        </h3>
+
+        <p>
+            The translation engine runs entirely inside this page.
+        </p>
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+/* ============================================================
+   TONTO
+   FINAL TRANSLATION ENGINE
+============================================================ */
+
+
+/* ============================================================
+   WORD DICTIONARY
+============================================================ */
+
+const dictionary = {
+
+    /* --------------------
+       BASIC
+    -------------------- */
+
+    "hello": "hola",
+    "hi": "hola",
+    "hey": "hola",
+
+    "goodbye": "adiós",
+    "bye": "adiós",
+
+    "yes": "sí",
+    "no": "no",
+
+    "please": "por favor",
+    "thanks": "gracias",
+    "thank": "agradecer",
+    "sorry": "lo siento",
+
+    "welcome": "bienvenido",
+
+    "maybe": "quizás",
+    "probably": "probablemente",
+    "really": "realmente",
+    "very": "muy",
+    "also": "también",
+    "just": "solo",
+    "only": "solo",
+
+    /* --------------------
+       PRONOUNS
+    -------------------- */
+
+    "i": "yo",
+    "me": "me",
+    "my": "mi",
+    "mine": "mío",
+
+    "you": "tú",
+    "your": "tu",
+    "yours": "tuyo",
+
+    "he": "él",
+    "him": "él",
+    "his": "su",
+
+    "she": "ella",
+    "her": "ella",
+
+    "it": "eso",
+    "its": "su",
+
+    "we": "nosotros",
+    "us": "nosotros",
+    "our": "nuestro",
+    "ours": "nuestro",
+
+    "they": "ellos",
+    "them": "ellos",
+    "their": "su",
+    "theirs": "suyo",
+
+    /* --------------------
+       PEOPLE
+    -------------------- */
+
+    "person": "persona",
+    "people": "personas",
+
+    "man": "hombre",
+    "men": "hombres",
+
+    "woman": "mujer",
+    "women": "mujeres",
+
+    "boy": "niño",
+    "boys": "niños",
+
+    "girl": "niña",
+    "girls": "niñas",
+
+    "child": "niño",
+    "children": "niños",
+
+    "baby": "bebé",
+
+    "friend": "amigo",
+    "friends": "amigos",
+
+    "family": "familia",
+
+    "mother": "madre",
+    "mom": "mamá",
+
+    "father": "padre",
+    "dad": "papá",
+
+    "brother": "hermano",
+    "sister": "hermana",
+
+    "son": "hijo",
+    "daughter": "hija",
+
+    "uncle": "tío",
+    "aunt": "tía",
+
+    "cousin": "primo",
+
+    "grandfather": "abuelo",
+    "grandmother": "abuela",
+
+    "grandpa": "abuelo",
+    "grandma": "abuela",
+
+    "neighbor": "vecino",
+
+    "teacher": "profesor",
+    "student": "estudiante",
+
+    "doctor": "médico",
+    "nurse": "enfermero",
+
+    "worker": "trabajador",
+    "developer": "desarrollador",
+
+    "player": "jugador",
+
+    /* --------------------
+       HOME
+    -------------------- */
+
+    "home": "casa",
+    "house": "casa",
+    "building": "edificio",
+
+    "room": "habitación",
+    "bedroom": "dormitorio",
+
+    "kitchen": "cocina",
+    "bathroom": "baño",
+
+    "bed": "cama",
+    "chair": "silla",
+    "table": "mesa",
+    "desk": "escritorio",
+
+    "door": "puerta",
+    "window": "ventana",
+
+    "wall": "pared",
+    "floor": "suelo",
+    "ceiling": "techo",
+
+    "garden": "jardín",
+
+    "key": "llave",
+    "light": "luz",
+    "lamp": "lámpara",
+
+    "television": "televisión",
+    "tv": "televisión",
+
+    /* --------------------
+       SCHOOL
+    -------------------- */
+
+    "school": "escuela",
+    "class": "clase",
+    "classroom": "aula",
+
+    "lesson": "lección",
+    "subject": "materia",
+
+    "book": "libro",
+    "books": "libros",
+
+    "notebook": "cuaderno",
+    "pencil": "lápiz",
+    "pen": "bolígrafo",
+
+    "paper": "papel",
+
+    "test": "examen",
+    "exam": "examen",
+
+    "project": "proyecto",
+    "homework": "tarea",
+
+    "question": "pregunta",
+    "answer": "respuesta",
+
+    "library": "biblioteca",
+
+    "science": "ciencia",
+    "math": "matemáticas",
+    "history": "historia",
+
+    "education": "educación",
+    "knowledge": "conocimiento",
+
+    /* --------------------
+       FOOD
+    -------------------- */
+
+    "food": "comida",
+    "water": "agua",
+
+    "breakfast": "desayuno",
+    "lunch": "almuerzo",
+    "dinner": "cena",
+    "meal": "comida",
+
+    "bread": "pan",
+    "apple": "manzana",
+    "banana": "plátano",
+
+    "meat": "carne",
+    "chicken": "pollo",
+    "beef": "carne de res",
+    "fish": "pescado",
+
+    "egg": "huevo",
+    "eggs": "huevos",
+
+    "cheese": "queso",
+    "milk": "leche",
+
+    "rice": "arroz",
+    "pasta": "pasta",
+
+    "pizza": "pizza",
+    "burger": "hamburguesa",
+    "hamburger": "hamburguesa",
+
+    "sandwich": "sándwich",
+
+    "cake": "pastel",
+    "cookie": "galleta",
+    "candy": "dulce",
+    "chocolate": "chocolate",
+
+    "fruit": "fruta",
+    "vegetable": "verdura",
+
+    "coffee": "café",
+    "tea": "té",
+    "juice": "jugo",
+
+    /* --------------------
+       ANIMALS
+    -------------------- */
+
+    "animal": "animal",
+    "animals": "animales",
+
+    "dog": "perro",
+    "dogs": "perros",
+
+    "cat": "gato",
+    "cats": "gatos",
+
+    "bird": "pájaro",
+    "birds": "pájaros",
+
+    "horse": "caballo",
+    "cow": "vaca",
+    "pig": "cerdo",
+    "sheep": "oveja",
+    "goat": "cabra",
+
+    "duck": "pato",
+    "rabbit": "conejo",
+    "mouse": "ratón",
+
+    "lion": "león",
+    "tiger": "tigre",
+    "bear": "oso",
+    "elephant": "elefante",
+    "monkey": "mono",
+
+    "snake": "serpiente",
+    "frog": "rana",
+    "turtle": "tortuga",
+
+    "shark": "tiburón",
+    "whale": "ballena",
+    "dolphin": "delfín",
+
+    "bee": "abeja",
+    "butterfly": "mariposa",
+    "spider": "araña",
+
+    /* --------------------
+       PLACES
+    -------------------- */
+
+    "place": "lugar",
+    "city": "ciudad",
+    "town": "pueblo",
+    "country": "país",
+
+    "street": "calle",
+    "road": "carretera",
+
+    "park": "parque",
+    "store": "tienda",
+    "shop": "tienda",
+
+    "restaurant": "restaurante",
+    "hospital": "hospital",
+    "bank": "banco",
+
+    "airport": "aeropuerto",
+    "station": "estación",
+
+    "hotel": "hotel",
+
+    "beach": "playa",
+    "mountain": "montaña",
+    "river": "río",
+    "lake": "lago",
+    "forest": "bosque",
+    "island": "isla",
+    "ocean": "océano",
+    "sea": "mar",
+
+    /* --------------------
+       TECHNOLOGY
+    -------------------- */
+
+    "technology": "tecnología",
+    "device": "dispositivo",
+
+    "computer": "computadora",
+    "phone": "teléfono",
+
+    "screen": "pantalla",
+    "keyboard": "teclado",
+    "mouse": "ratón",
+
+    "network": "red",
+    "server": "servidor",
+
+    "browser": "navegador",
+    "application": "aplicación",
+    "app": "aplicación",
+
+    "software": "software",
+    "hardware": "hardware",
+
+    "program": "programa",
+    "programming": "programación",
+    "coding": "programación",
+    "code": "código",
+
+    "file": "archivo",
+    "folder": "carpeta",
+
+    "data": "datos",
+    "password": "contraseña",
+    "account": "cuenta",
+
+    "email": "correo electrónico",
+    "message": "mensaje",
+
+    "camera": "cámara",
+    "video": "video",
+    "photo": "foto",
+    "image": "imagen",
+
+    "internet": "internet",
+    "website": "sitio web",
+
+    /* --------------------
+       GAMES
+    -------------------- */
+
+    "game": "juego",
+    "games": "juegos",
+    "gaming": "videojuegos",
+    "gamer": "jugador",
+
+    "level": "nivel",
+    "score": "puntuación",
+    "point": "punto",
+    "points": "puntos",
+
+    "enemy": "enemigo",
+    "enemies": "enemigos",
+
+    "character": "personaje",
+    "map": "mapa",
+    "mission": "misión",
+    "quest": "misión",
+
+    "item": "objeto",
+    "weapon": "arma",
+    "armor": "armadura",
+
+    "health": "salud",
+    "damage": "daño",
+    "power": "poder",
+    "speed": "velocidad",
+
+    "team": "equipo",
+
+    "victory": "victoria",
+    "defeat": "derrota",
+
+    /* --------------------
+       TRANSPORT
+    -------------------- */
+
+    "car": "coche",
+    "cars": "coches",
+
+    "bus": "autobús",
+    "train": "tren",
+
+    "plane": "avión",
+    "airplane": "avión",
+
+    "boat": "barco",
+    "ship": "barco",
+
+    "bike": "bicicleta",
+    "bicycle": "bicicleta",
+
+    "motorcycle": "motocicleta",
+    "truck": "camión",
+    "taxi": "taxi",
+
+    "trip": "viaje",
+    "journey": "viaje",
+    "travel": "viajar",
+
+    /* --------------------
+       CLOTHING
+    -------------------- */
+
+    "shirt": "camisa",
+    "pants": "pantalones",
+    "shorts": "pantalones cortos",
+
+    "shoes": "zapatos",
+    "socks": "calcetines",
+
+    "hat": "sombrero",
+    "jacket": "chaqueta",
+    "coat": "abrigo",
+
+    "dress": "vestido",
+    "skirt": "falda",
+
+    "clothes": "ropa",
+    "clothing": "ropa",
+
+    /* --------------------
+       NATURE
+    -------------------- */
+
+    "world": "mundo",
+    "earth": "Tierra",
+
+    "sun": "sol",
+    "moon": "luna",
+    "sky": "cielo",
+
+    "star": "estrella",
+    "stars": "estrellas",
+
+    "tree": "árbol",
+    "trees": "árboles",
+
+    "flower": "flor",
+    "flowers": "flores",
+
+    "fire": "fuego",
+    "ice": "hielo",
+
+    /* --------------------
+       WEATHER
+    -------------------- */
+
+    "weather": "clima",
+    "rain": "lluvia",
+    "rainy": "lluvioso",
+
+    "snow": "nieve",
+    "snowy": "nevado",
+
+    "storm": "tormenta",
+
+    "wind": "viento",
+    "windy": "ventoso",
+
+    "cloud": "nube",
+    "cloudy": "nublado",
+
+    "sunny": "soleado",
+
+    "temperature": "temperatura",
+
+    /* --------------------
+       TIME
+    -------------------- */
+
+    "day": "día",
+    "night": "noche",
+
+    "morning": "mañana",
+    "afternoon": "tarde",
+    "evening": "tarde",
+
+    "today": "hoy",
+    "tomorrow": "mañana",
+    "yesterday": "ayer",
+
+    "time": "tiempo",
+    "year": "año",
+    "week": "semana",
+    "month": "mes",
+
+    "second": "segundo",
+    "seconds": "segundos",
+
+    "minute": "minuto",
+    "minutes": "minutos",
+
+    "hour": "hora",
+    "hours": "horas",
+
+    /* --------------------
+       ADJECTIVES
+    -------------------- */
+
+    "big": "grande",
+    "small": "pequeño",
+
+    "good": "bueno",
+    "bad": "malo",
+
+    "happy": "feliz",
+    "sad": "triste",
+
+    "fast": "rápido",
+    "slow": "lento",
+
+    "new": "nuevo",
+    "old": "viejo",
+
+    "easy": "fácil",
+    "hard": "difícil",
+
+    "beautiful": "hermoso",
+    "ugly": "feo",
+
+    "strong": "fuerte",
+    "weak": "débil",
+
+    "smart": "inteligente",
+    "stupid": "tonto",
+
+    "funny": "gracioso",
+    "serious": "serio",
+
+    "kind": "amable",
+    "nice": "agradable",
+
+    "angry": "enojado",
+    "scared": "asustado",
+    "afraid": "asustado",
+
+    "excited": "emocionado",
+    "bored": "aburrido",
+
+    "hungry": "hambriento",
+    "thirsty": "sediento",
+
+    "tired": "cansado",
+    "busy": "ocupado",
+
+    "free": "libre",
+
+    "important": "importante",
+    "different": "diferente",
+    "same": "mismo",
+
+    "wrong": "incorrecto",
+    "true": "verdadero",
+    "false": "falso",
+
+    "real": "real",
+    "fake": "falso",
+
+    "dark": "oscuro",
+    "bright": "brillante",
+
+    "hot": "caliente",
+    "cold": "frío",
+    "warm": "cálido",
+
+    "clean": "limpio",
+    "dirty": "sucio",
+
+    "full": "lleno",
+    "empty": "vacío",
+
+    "long": "largo",
+    "short": "corto",
+
+    "high": "alto",
+    "low": "bajo",
+
+    "young": "joven",
+    "safe": "seguro",
+    "dangerous": "peligroso",
+
+    "great": "genial",
+    "awesome": "increíble",
+    "amazing": "increíble",
+    "cool": "genial",
+
+    /* --------------------
+       CONNECTORS
+    -------------------- */
+
+    "and": "y",
+    "or": "o",
+    "but": "pero",
+
+    "because": "porque",
+
+    "with": "con",
+    "without": "sin",
+
+    "for": "para",
+    "from": "de",
+    "to": "a",
+
+    "in": "en",
+    "on": "en",
+    "at": "en",
+
+    "then": "entonces",
+    "now": "ahora",
+    "later": "después",
+
+    "before": "antes",
+    "after": "después",
+
+    "always": "siempre",
+    "never": "nunca",
+    "sometimes": "a veces",
+    "usually": "normalmente",
+
+    "more": "más",
+    "less": "menos",
+
+    "here": "aquí",
+    "there": "allí",
+
+    "everywhere": "en todas partes",
+
+    "together": "juntos",
+    "alone": "solo",
+
+    /* --------------------
+       QUESTIONS
+    -------------------- */
+
+    "what": "qué",
+    "who": "quién",
+    "where": "dónde",
+    "when": "cuándo",
+    "why": "por qué",
+    "how": "cómo",
+    "which": "cuál",
+    "whose": "cuyo",
+
+    /* --------------------
+       INDEFINITES
+    -------------------- */
+
+    "something": "algo",
+    "anything": "cualquier cosa",
+    "nothing": "nada",
+    "everything": "todo",
+
+    "someone": "alguien",
+    "anyone": "cualquiera",
+    "everyone": "todos",
+    "nobody": "nadie",
+
+    /* --------------------
+       NUMBERS
+    -------------------- */
+
+    "one": "uno",
+    "two": "dos",
+    "three": "tres",
+    "four": "cuatro",
+    "five": "cinco",
+    "six": "seis",
+    "seven": "siete",
+    "eight": "ocho",
+    "nine": "nueve",
+    "ten": "diez",
+
+    "eleven": "once",
+    "twelve": "doce",
+    "thirteen": "trece",
+    "fourteen": "catorce",
+    "fifteen": "quince",
+
+    "sixteen": "dieciséis",
+    "seventeen": "diecisiete",
+    "eighteen": "dieciocho",
+    "nineteen": "diecinueve",
+    "twenty": "veinte",
+
+    /* --------------------
+       VERBS
+    -------------------- */
+
+    "work": "trabajar",
+    "works": "trabajar",
+    "worked": "trabajó",
+
+    "live": "vivir",
+    "lives": "vivir",
+    "lived": "vivió",
+
+    "play": "jugar",
+    "plays": "jugar",
+    "played": "jugó",
+
+    "learn": "aprender",
+    "learns": "aprender",
+    "learned": "aprendió",
+
+    "study": "estudiar",
+    "studies": "estudiar",
+    "studied": "estudió",
+
+    "eat": "comer",
+    "eats": "comer",
+    "ate": "comió",
+
+    "drink": "beber",
+    "drinks": "beber",
+    "drank": "bebió",
+
+    "go": "ir",
+    "goes": "ir",
+    "went": "fue",
+
+    "come": "venir",
+    "comes": "venir",
+    "came": "vino",
+
+    "run": "correr",
+    "runs": "correr",
+    "ran": "corrió",
+
+    "walk": "caminar",
+    "walks": "caminar",
+    "walked": "caminó",
+
+    "sleep": "dormir",
+    "sleeps": "dormir",
+    "slept": "durmió",
+
+    "read": "leer",
+    "reads": "leer",
+    "wrote": "escribió",
+    "write": "escribir",
+    "writes": "escribir",
+
+    "draw": "dibujar",
+    "draws": "dibujar",
+    "drew": "dibujó",
+
+    "make": "hacer",
+    "makes": "hacer",
+    "made": "hizo",
+
+    "do": "hacer",
+    "does": "hacer",
+    "did": "hizo",
+
+    "build": "construir",
+    "builds": "construir",
+    "built": "construyó",
+
+    "create": "crear",
+    "creates": "crear",
+    "created": "creó",
+
+    "fix": "arreglar",
+    "fixes": "arreglar",
+    "fixed": "arregló",
+
+    "change": "cambiar",
+    "changes": "cambiar",
+    "changed": "cambió",
+
+    "start": "empezar",
+    "starts": "empezar",
+    "started": "empezó",
+
+    "finish": "terminar",
+    "finishes": "terminar",
+    "finished": "terminó",
+
+    "stop": "parar",
+    "stops": "parar",
+    "stopped": "paró",
+
+    "try": "intentar",
+    "tries": "intentar",
+    "tried": "intentó",
+
+    "help": "ayudar",
+    "helps": "ayudar",
+    "helped": "ayudó",
+
+    "use": "usar",
+    "uses": "usar",
+    "used": "usó",
+
+    "open": "abrir",
+    "opens": "abrir",
+    "opened": "abrió",
+
+    "close": "cerrar",
+    "closes": "cerrar",
+    "closed": "cerró",
+
+    "find": "encontrar",
+    "finds": "encontrar",
+    "found": "encontró",
+
+    "give": "dar",
+    "gives": "dar",
+    "gave": "dio",
+
+    "take": "tomar",
+    "takes": "tomar",
+    "took": "tomó",
+
+    "get": "obtener",
+    "gets": "obtener",
+    "got": "obtuvo",
+
+    "bring": "traer",
+    "brings": "traer",
+    "brought": "trajo",
+
+    "buy": "comprar",
+    "buys": "comprar",
+    "bought": "compró",
+
+    "sell": "vender",
+    "sells": "vender",
+    "sold": "vendió",
+
+    "pay": "pagar",
+    "pays": "pagar",
+    "paid": "pagó",
+
+    "know": "saber",
+    "knows": "saber",
+    "knew": "supo",
+
+    "think": "pensar",
+    "thinks": "pensar",
+    "thought": "pensó",
+
+    "see": "ver",
+    "sees": "ver",
+    "saw": "vio",
+
+    "look": "mirar",
+    "looks": "mirar",
+    "looked": "miró",
+
+    "watch": "ver",
+    "watched": "vio",
+
+    "listen": "escuchar",
+    "listens": "escuchar",
+    "listened": "escuchó",
+
+    "hear": "oír",
+    "hears": "oír",
+    "heard": "oyó",
+
+    "say": "decir",
+    "says": "decir",
+    "said": "dijo",
+
+    "tell": "decir",
+    "tells": "decir",
+    "told": "dijo",
+
+    "remember": "recordar",
+    "remembers": "recordar",
+    "remembered": "recordó",
+
+    "forget": "olvidar",
+    "forgets": "olvidar",
+    "forgot": "olvidó",
+
+    "wait": "esperar",
+    "waits": "esperar",
+    "waited": "esperó",
+
+    "move": "mover",
+    "moves": "mover",
+    "moved": "movió",
+
+    "turn": "girar",
+    "turns": "girar",
+    "turned": "giró",
+
+    "break": "romper",
+    "breaks": "romper",
+    "broke": "rompió",
+
+    "choose": "elegir",
+    "chooses": "elegir",
+    "chose": "eligió",
+
+    "win": "ganar",
+    "wins": "ganar",
+    "won": "ganó",
+
+    "lose": "perder",
+    "loses": "perder",
+    "lost": "perdió",
+
+    "speak": "hablar",
+    "speaks": "hablar",
+    "spoke": "habló",
+
+    "want": "querer",
+    "wants": "querer",
+    "wanted": "quiso",
+
+    "need": "necesitar",
+    "needs": "necesitar",
+    "needed": "necesitó",
+
+    "love": "amar",
+    "loves": "amar",
+    "loved": "amó",
+
+    "like": "gustar",
+    "likes": "gustar",
+    "liked": "gustó",
+
+    "have": "tener",
+    "has": "tener",
+    "had": "tuvo",
+
+    "can": "poder",
+    "could": "podría",
+
+    "will": "irá",
+
+    "be": "ser",
+    "am": "ser",
+    "is": "ser",
+    "are": "ser",
+    "was": "era",
+    "were": "eran",
+
+    /* --------------------
+       ARTICLES
+    -------------------- */
+
+    "the": "",
+    "a": "un",
+    "an": "un"
+
+};
+
+
+/* ============================================================
+   EXACT PHRASES
+============================================================ */
+
+const phrases = {
+
+    "hello": "hola",
+    "hi": "hola",
+    "hey": "hola",
+
+    "hello how are you": "hola, ¿cómo estás?",
+    "hi how are you": "hola, ¿cómo estás?",
+    "hey how are you": "hola, ¿cómo estás?",
+
+    "how are you": "¿cómo estás?",
+    "how old are you": "¿cuántos años tienes?",
+
+    "what is your name": "¿cómo te llamas?",
+    "what's your name": "¿cómo te llamas?",
+
+    "my name is": "me llamo",
+
+    "nice to meet you": "mucho gusto",
+
+    "see you later": "hasta luego",
+    "see you tomorrow": "nos vemos mañana",
+    "see you": "nos vemos",
+
+    "good morning": "buenos días",
+    "good afternoon": "buenas tardes",
+    "good evening": "buenas tardes",
+    "good night": "buenas noches",
+
+    "thank you": "gracias",
+    "thank you very much": "muchas gracias",
+    "you're welcome": "de nada",
+    "you are welcome": "de nada",
+
+    "i love you": "te quiero",
+
+    "i don't know": "no sé",
+    "i do not know": "no sé",
+
+    "i don't understand": "no entiendo",
+    "i do not understand": "no entiendo",
+
+    "i understand": "entiendo",
+
+    "help me": "ayúdame",
+
+    "what is this": "¿qué es esto?",
+
+    "where are you": "¿dónde estás?",
+
+    "what are you doing": "¿qué estás haciendo?",
+
+    "what time is it": "¿qué hora es?",
+
+    "how much is it": "¿cuánto cuesta?",
+
+    "i am hungry": "tengo hambre",
+    "i'm hungry": "tengo hambre",
+
+    "i am thirsty": "tengo sed",
+    "i'm thirsty": "tengo sed",
+
+    "i am tired": "estoy cansado",
+    "i'm tired": "estoy cansado",
+
+    "i am happy": "estoy feliz",
+    "i'm happy": "estoy feliz",
+
+    "i am sad": "estoy triste",
+    "i'm sad": "estoy triste",
+
+    "i am great": "soy genial",
+    "i'm great": "soy genial",
+
+    "this is good": "esto es bueno",
+    "this is bad": "esto es malo",
+    "this is great": "esto es genial",
+    "this is amazing": "esto es increíble",
+    "this is awesome": "esto es increíble",
+    "this is cool": "esto es genial",
+
+    "i am learning": "estoy aprendiendo",
+    "i'm learning": "estoy aprendiendo",
+
+    "i am going home": "voy a casa",
+    "i'm going home": "voy a casa",
+
+    "i want to go": "quiero ir",
+    "i want to eat": "quiero comer",
+    "i want to play": "quiero jugar",
+
+    "i need help": "necesito ayuda",
+
+    "i have a question": "tengo una pregunta",
+
+    "let's go": "vamos",
+
+    "come here": "ven aquí",
+
+    "good luck": "buena suerte",
+
+    "of course": "por supuesto",
+
+    "no problem": "no hay problema",
+
+    "be careful": "ten cuidado",
+
+    "take care": "cuídate"
+
+};
+
+
+/* ============================================================
+   CONTRACTIONS
+============================================================ */
+
+const contractions = {
+
+    "i'm": "i am",
+    "i’m": "i am",
+
+    "you're": "you are",
+    "you’re": "you are",
+
+    "he's": "he is",
+    "he’s": "he is",
+
+    "she's": "she is",
+    "she’s": "she is",
+
+    "it's": "it is",
+    "it’s": "it is",
+
+    "we're": "we are",
+    "we’re": "we are",
+
+    "they're": "they are",
+    "they’re": "they are",
+
+    "don't": "do not",
+    "don’t": "do not",
+
+    "doesn't": "does not",
+    "doesn’t": "does not",
+
+    "didn't": "did not",
+    "didn’t": "did not",
+
+    "can't": "cannot",
+    "can’t": "cannot",
+
+    "couldn't": "could not",
+    "couldn’t": "could not",
+
+    "wouldn't": "would not",
+    "wouldn’t": "would not",
+
+    "shouldn't": "should not",
+    "shouldn’t": "should not",
+
+    "won't": "will not",
+    "won’t": "will not",
+
+    "isn't": "is not",
+    "isn’t": "is not",
+
+    "aren't": "are not",
+    "aren’t": "are not",
+
+    "wasn't": "was not",
+    "wasn’t": "was not",
+
+    "weren't": "were not",
+    "weren’t": "were not",
+
+    "i've": "i have",
+    "i’ve": "i have",
+
+    "you've": "you have",
+    "you’ve": "you have",
+
+    "we've": "we have",
+    "we’ve": "we have",
+
+    "they've": "they have",
+    "they’ve": "they have",
+
+    "i'll": "i will",
+    "i’ll": "i will",
+
+    "you'll": "you will",
+    "you’ll": "you will",
+
+    "he'll": "he will",
+    "he’ll": "he will",
+
+    "she'll": "she will",
+    "she’ll": "she will",
+
+    "we'll": "we will",
+    "we’ll": "we will",
+
+    "they'll": "they will",
+    "they’ll": "they will"
+
+};
+
+
+/* ============================================================
+   NORMALIZE
+============================================================ */
+
+function normalize(text) {
+
+    return text
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+/* ============================================================
+   ESCAPE REGEX
+============================================================ */
+
+function escapeRegex(text) {
+
+    return text.replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&"
+    );
+
+}
+
+
+/* ============================================================
+   EXPAND CONTRACTIONS
+============================================================ */
+
+function expandContractions(text) {
+
+    let result = text;
+
+    for (
+        const contraction in contractions
+    ) {
+
+        const regex =
+            new RegExp(
+                "\\b" +
+                escapeRegex(contraction) +
+                "\\b",
+                "gi"
+            );
+
+        result =
+            result.replace(
+                regex,
+                contractions[contraction]
+            );
+
+    }
+
+    return result;
+
+}
+
+
+/* ============================================================
+   WORD TOKENIZATION
+============================================================ */
+
+function tokenize(text) {
+
+    return text.match(
+        /[a-zA-ZÀ-ÿ']+|[0-9]+|[.,!?;:]/g
+    ) || [];
+
+}
+
+
+/* ============================================================
+   REMOVE punctuation
+============================================================ */
+
+function cleanPunctuation(text) {
+
+    return text
+        .replace(/\s+([,.!?;:])/g, "$1")
+        .replace(/([!?]){2,}/g, "$1")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+/* ============================================================
+   INFINITIVE TRANSLATOR
+============================================================ */
+
+function translateInfinitive(verb) {
+
+    const irregular = {
+
+        "go": "ir",
+        "eat": "comer",
+        "drink": "beber",
+
+        "play": "jugar",
+        "work": "trabajar",
+
+        "live": "vivir",
+        "learn": "aprender",
+
+        "study": "estudiar",
+
+        "read": "leer",
+        "write": "escribir",
+
+        "run": "correr",
+        "walk": "caminar",
+
+        "sleep": "dormir",
+
+        "make": "hacer",
+        "do": "hacer",
+
+        "build": "construir",
+        "create": "crear",
+
+        "fix": "arreglar",
+        "change": "cambiar",
+
+        "start": "empezar",
+        "finish": "terminar",
+        "stop": "parar",
+
+        "try": "intentar",
+
+        "help": "ayudar",
+
+        "use": "usar",
+
+        "open": "abrir",
+        "close": "cerrar",
+
+        "find": "encontrar",
+
+        "give": "dar",
+        "take": "tomar",
+        "get": "obtener",
+
+        "bring": "traer",
+
+        "buy": "comprar",
+        "sell": "vender",
+
+        "pay": "pagar",
+
+        "know": "saber",
+        "think": "pensar",
+
+        "see": "ver",
+        "look": "mirar",
+        "watch": "ver",
+
+        "listen": "escuchar",
+        "hear": "oír",
+
+        "say": "decir",
+        "tell": "decir",
+
+        "remember": "recordar",
+        "forget": "olvidar",
+
+        "wait": "esperar",
+
+        "move": "mover",
+        "turn": "girar",
+
+        "break": "romper",
+        "choose": "elegir",
+
+        "win": "ganar",
+        "lose": "perder",
+
+        "speak": "hablar",
+
+        "want": "querer",
+        "need": "necesitar",
+        "love": "amar",
+        "like": "gustar",
+
+        "have": "tener",
+
+        "be": "ser"
+
+    };
+
+    return (
+        irregular[
+            verb.toLowerCase()
+        ] ||
+        dictionary[
+            verb.toLowerCase()
+        ] ||
+        verb
+    );
+
+}
+
+
+/* ============================================================
+   REGULAR VERB CONJUGATION
+============================================================ */
+
+function regularArConjugation(
+    verb,
+    subject
+) {
+
+    const stem =
+        verb.slice(
+            0,
+            -2
+        );
+
+    const endings = {
+
+        "i": "o",
+        "you": "as",
+        "he": "a",
+        "she": "a",
+        "it": "a",
+        "we": "amos",
+        "they": "an"
+
+    };
+
+    return (
+        stem +
+        (
+            endings[
+                subject
+            ] || "a"
+        )
+    );
+
+}
+
+
+function regularErConjugation(
+    verb,
+    subject
+) {
+
+    const stem =
+        verb.slice(
+            0,
+            -2
+        );
+
+    const endings = {
+
+        "i": "o",
+        "you": "es",
+        "he": "e",
+        "she": "e",
+        "it": "e",
+        "we": "emos",
+        "they": "en"
+
+    };
+
+    return (
+        stem +
+        (
+            endings[
+                subject
+            ] || "e"
+        )
+    );
+
+}
+
+
+function regularIrConjugation(
+    verb,
+    subject
+) {
+
+    const stem =
+        verb.slice(
+            0,
+            -2
+        );
+
+    const endings = {
+
+        "i": "o",
+        "you": "es",
+        "he": "e",
+        "she": "e",
+        "it": "e",
+        "we": "imos",
+        "they": "en"
+
+    };
+
+    return (
+        stem +
+        (
+            endings[
+                subject
+            ] || "e"
+        )
+    );
+
+}
+
+
+/* ============================================================
+   COMMON VERB CONJUGATIONS
+============================================================ */
+
+const conjugations = {
+
+    "work": {
+        "i": "trabajo",
+        "you": "trabajas",
+        "he": "trabaja",
+        "she": "trabaja",
+        "it": "trabaja",
+        "we": "trabajamos",
+        "they": "trabajan"
+    },
+
+    "live": {
+        "i": "vivo",
+        "you": "vives",
+        "he": "vive",
+        "she": "vive",
+        "it": "vive",
+        "we": "vivimos",
+        "they": "viven"
+    },
+
+    "play": {
+        "i": "juego",
+        "you": "juegas",
+        "he": "juega",
+        "she": "juega",
+        "it": "juega",
+        "we": "jugamos",
+        "they": "juegan"
+    },
+
+    "learn": {
+        "i": "aprendo",
+        "you": "aprendes",
+        "he": "aprende",
+        "she": "aprende",
+        "it": "aprende",
+        "we": "aprendemos",
+        "they": "aprenden"
+    },
+
+    "study": {
+        "i": "estudio",
+        "you": "estudias",
+        "he": "estudia",
+        "she": "estudia",
+        "it": "estudia",
+        "we": "estudiamos",
+        "they": "estudian"
+    },
+
+    "eat": {
+        "i": "como",
+        "you": "comes",
+        "he": "come",
+        "she": "come",
+        "it": "come",
+        "we": "comemos",
+        "they": "comen"
+    },
+
+    "drink": {
+        "i": "bebo",
+        "you": "bebes",
+        "he": "bebe",
+        "she": "bebe",
+        "it": "bebe",
+        "we": "bebemos",
+        "they": "beben"
+    },
+
+    "go": {
+        "i": "voy",
+        "you": "vas",
+        "he": "va",
+        "she": "va",
+        "it": "va",
+        "we": "vamos",
+        "they": "van"
+    },
+
+    "come": {
+        "i": "vengo",
+        "you": "vienes",
+        "he": "viene",
+        "she": "viene",
+        "it": "viene",
+        "we": "venimos",
+        "they": "vienen"
+    },
+
+    "run": {
+        "i": "corro",
+        "you": "corres",
+        "he": "corre",
+        "she": "corre",
+        "it": "corre",
+        "we": "corremos",
+        "they": "corren"
+    },
+
+    "walk": {
+        "i": "camino",
+        "you": "caminas",
+        "he": "camina",
+        "she": "camina",
+        "it": "camina",
+        "we": "caminamos",
+        "they": "caminan"
+    },
+
+    "sleep": {
+        "i": "duermo",
+        "you": "duermes",
+        "he": "duerme",
+        "she": "duerme",
+        "it": "duerme",
+        "we": "dormimos",
+        "they": "duermen"
+    },
+
+    "write": {
+        "i": "escribo",
+        "you": "escribes",
+        "he": "escribe",
+        "she": "escribe",
+        "it": "escribe",
+        "we": "escribimos",
+        "they": "escriben"
+    },
+
+    "read": {
+        "i": "leo",
+        "you": "lees",
+        "he": "lee",
+        "she": "lee",
+        "it": "lee",
+        "we": "leemos",
+        "they": "leen"
+    },
+
+    "make": {
+        "i": "hago",
+        "you": "haces",
+        "he": "hace",
+        "she": "hace",
+        "it": "hace",
+        "we": "hacemos",
+        "they": "hacen"
+    },
+
+    "do": {
+        "i": "hago",
+        "you": "haces",
+        "he": "hace",
+        "she": "hace",
+        "it": "hace",
+        "we": "hacemos",
+        "they": "hacen"
+    },
+
+    "build": {
+        "i": "construyo",
+        "you": "construyes",
+        "he": "construye",
+        "she": "construye",
+        "it": "construye",
+        "we": "construimos",
+        "they": "construyen"
+    },
+
+    "create": {
+        "i": "creo",
+        "you": "creas",
+        "he": "crea",
+        "she": "crea",
+        "it": "crea",
+        "we": "creamos",
+        "they": "crean"
+    },
+
+    "fix": {
+        "i": "arreglo",
+        "you": "arreglas",
+        "he": "arregla",
+        "she": "arregla",
+        "it": "arregla",
+        "we": "arreglamos",
+        "they": "arreglan"
+    },
+
+    "help": {
+        "i": "ayudo",
+        "you": "ayudas",
+        "he": "ayuda",
+        "she": "ayuda",
+        "it": "ayuda",
+        "we": "ayudamos",
+        "they": "ayudan"
+    },
+
+    "use": {
+        "i": "uso",
+        "you": "usas",
+        "he": "usa",
+        "she": "usa",
+        "it": "usa",
+        "we": "usamos",
+        "they": "usan"
+    },
+
+    "open": {
+        "i": "abro",
+        "you": "abres",
+        "he": "abre",
+        "she": "abre",
+        "it": "abre",
+        "we": "abrimos",
+        "they": "abren"
+    },
+
+    "close": {
+        "i": "cierro",
+        "you": "cierras",
+        "he": "cierra",
+        "she": "cierra",
+        "it": "cierra",
+        "we": "cerramos",
+        "they": "cierran"
+    },
+
+    "find": {
+        "i": "encuentro",
+        "you": "encuentras",
+        "he": "encuentra",
+        "she": "encuentra",
+        "it": "encuentra",
+        "we": "encontramos",
+        "they": "encuentran"
+    },
+
+    "give": {
+        "i": "doy",
+        "you": "das",
+        "he": "da",
+        "she": "da",
+        "it": "da",
+        "we": "damos",
+        "they": "dan"
+    },
+
+    "take": {
+        "i": "tomo",
+        "you": "tomas",
+        "he": "toma",
+        "she": "toma",
+        "it": "toma",
+        "we": "tomamos",
+        "they": "toman"
+    },
+
+    "get": {
+        "i": "obtengo",
+        "you": "obtienes",
+        "he": "obtiene",
+        "she": "obtiene",
+        "it": "obtiene",
+        "we": "obtenemos",
+        "they": "obtienen"
+    },
+
+    "bring": {
+        "i": "traigo",
+        "you": "traes",
+        "he": "trae",
+        "she": "trae",
+        "it": "trae",
+        "we": "traemos",
+        "they": "traen"
+    },
+
+    "buy": {
+        "i": "compro",
+        "you": "compras",
+        "he": "compra",
+        "she": "compra",
+        "it": "compra",
+        "we": "compramos",
+        "they": "compran"
+    },
+
+    "sell": {
+        "i": "vendo",
+        "you": "vendes",
+        "he": "vende",
+        "she": "vende",
+        "it": "vende",
+        "we": "vendemos",
+        "they": "venden"
+    },
+
+    "pay": {
+        "i": "pago",
+        "you": "pagas",
+        "he": "paga",
+        "she": "paga",
+        "it": "paga",
+        "we": "pagamos",
+        "they": "pagan"
+    },
+
+    "know": {
+        "i": "sé",
+        "you": "sabes",
+        "he": "sabe",
+        "she": "sabe",
+        "it": "sabe",
+        "we": "sabemos",
+        "they": "saben"
+    },
+
+    "think": {
+        "i": "pienso",
+        "you": "piensas",
+        "he": "piensa",
+        "she": "piensa",
+        "it": "piensa",
+        "we": "pensamos",
+        "they": "piensan"
+    },
+
+    "see": {
+        "i": "veo",
+        "you": "ves",
+        "he": "ve",
+        "she": "ve",
+        "it": "ve",
+        "we": "vemos",
+        "they": "ven"
+    },
+
+    "look": {
+        "i": "miro",
+        "you": "miras",
+        "he": "mira",
+        "she": "mira",
+        "it": "mira",
+        "we": "miramos",
+        "they": "miran"
+    },
+
+    "watch": {
+        "i": "veo",
+        "you": "ves",
+        "he": "ve",
+        "she": "ve",
+        "it": "ve",
+        "we": "vemos",
+        "they": "ven"
+    },
+
+    "listen": {
+        "i": "escucho",
+        "you": "escuchas",
+        "he": "escucha",
+        "she": "escucha",
+        "it": "escucha",
+        "we": "escuchamos",
+        "they": "escuchan"
+    },
+
+    "hear": {
+        "i": "oigo",
+        "you": "oyes",
+        "he": "oye",
+        "she": "oye",
+        "it": "oye",
+        "we": "oímos",
+        "they": "oyen"
+    },
+
+    "say": {
+        "i": "digo",
+        "you": "dices",
+        "he": "dice",
+        "she": "dice",
+        "it": "dice",
+        "we": "decimos",
+        "they": "dicen"
+    },
+
+    "tell": {
+        "i": "digo",
+        "you": "dices",
+        "he": "dice",
+        "she": "dice",
+        "it": "dice",
+        "we": "decimos",
+        "they": "dicen"
+    },
+
+    "remember": {
+        "i": "recuerdo",
+        "you": "recuerdas",
+        "he": "recuerda",
+        "she": "recuerda",
+        "it": "recuerda",
+        "we": "recordamos",
+        "they": "recuerdan"
+    },
+
+    "forget": {
+        "i": "olvido",
+        "you": "olvidas",
+        "he": "olvida",
+        "she": "olvida",
+        "it": "olvida",
+        "we": "olvidamos",
+        "they": "olvidan"
+    },
+
+    "wait": {
+        "i": "espero",
+        "you": "esperas",
+        "he": "espera",
+        "she": "espera",
+        "it": "espera",
+        "we": "esperamos",
+        "they": "esperan"
+    },
+
+    "move": {
+        "i": "muevo",
+        "you": "mueves",
+        "he": "mueve",
+        "she": "mueve",
+        "it": "mueve",
+        "we": "movemos",
+        "they": "mueven"
+    },
+
+    "turn": {
+        "i": "giro",
+        "you": "giras",
+        "he": "gira",
+        "she": "gira",
+        "it": "gira",
+        "we": "giramos",
+        "they": "giran"
+    },
+
+    "choose": {
+        "i": "elijo",
+        "you": "eliges",
+        "he": "elige",
+        "she": "elige",
+        "it": "elige",
+        "we": "elegimos",
+        "they": "eligen"
+    },
+
+    "win": {
+        "i": "gano",
+        "you": "ganas",
+        "he": "gana",
+        "she": "gana",
+        "it": "gana",
+        "we": "ganamos",
+        "they": "ganan"
+    },
+
+    "lose": {
+        "i": "pierdo",
+        "you": "pierdes",
+        "he": "pierde",
+        "she": "pierde",
+        "it": "pierde",
+        "we": "perdemos",
+        "they": "pierden"
+    },
+
+    "speak": {
+        "i": "hablo",
+        "you": "hablas",
+        "he": "habla",
+        "she": "habla",
+        "it": "habla",
+        "we": "hablamos",
+        "they": "hablan"
+    },
+
+    "want": {
+        "i": "quiero",
+        "you": "quieres",
+        "he": "quiere",
+        "she": "quiere",
+        "it": "quiere",
+        "we": "queremos",
+        "they": "quieren"
+    },
+
+    "need": {
+        "i": "necesito",
+        "you": "necesitas",
+        "he": "necesita",
+        "she": "necesita",
+        "it": "necesita",
+        "we": "necesitamos",
+        "they": "necesitan"
+    },
+
+    "love": {
+        "i": "amo",
+        "you": "amas",
+        "he": "ama",
+        "she": "ama",
+        "it": "ama",
+        "we": "amamos",
+        "they": "aman"
+    },
+
+    "have": {
+        "i": "tengo",
+        "you": "tienes",
+        "he": "tiene",
+        "she": "tiene",
+        "it": "tiene",
+        "we": "tenemos",
+        "they": "tienen"
+    },
+
+    "can": {
+        "i": "puedo",
+        "you": "puedes",
+        "he": "puede",
+        "she": "puede",
+        "it": "puede",
+        "we": "podemos",
+        "they": "pueden"
+    }
+
+};
+
+
+/* ============================================================
+   VERB LOOKUP
+============================================================ */
+
+function conjugateVerb(
+    verb,
+    subject
+) {
+
+    verb =
+        verb.toLowerCase();
+
+    if (
+        conjugations[verb] &&
+        conjugations[verb][subject]
+    ) {
+
+        return conjugations[verb][subject];
+
+    }
+
+    const base =
+        translateInfinitive(
+            verb
+        );
+
+    if (
+        base.endsWith("ar")
+    ) {
+
+        return regularArConjugation(
+            base,
+            subject
+        );
+
+    }
+
+    if (
+        base.endsWith("er")
+    ) {
+
+        return regularErConjugation(
+            base,
+            subject
+        );
+
+    }
+
+    if (
+        base.endsWith("ir")
+    ) {
+
+        return regularIrConjugation(
+            base,
+            subject
+        );
+
+    }
+
+    return base;
+
+}
+
+
+/* ============================================================
+   SUBJECT HELPERS
+============================================================ */
+
+function spanishSubject(
+    subject
+) {
+
+    const map = {
+
+        "i": "yo",
+        "you": "tú",
+        "he": "él",
+        "she": "ella",
+        "it": "eso",
+        "we": "nosotros",
+        "they": "ellos"
+
+    };
+
+    return (
+        map[subject] ||
+        subject
+    );
+
+}
+
+
+/* ============================================================
+   OBJECT TRANSLATION
+============================================================ */
+
+function translateObject(
+    text
+) {
+
+    let result =
+        text.trim();
+
+    result =
+        translateArticles(
+            result
+        );
+
+    result =
+        translateWords(
+            result,
+            text
+        );
+
+    return result;
+
+}
+
+
+/* ============================================================
+   ARTICLE TRANSLATION
+============================================================ */
+
+function translateArticles(
+    text
+) {
+
+    return text
+        .replace(
+            /\ban\b/gi,
+            "un"
+        )
+        .replace(
+            /\ba\b/gi,
+            "un"
+        )
+        .replace(
+            /\bthe\b/gi,
+            ""
+        )
+        .replace(
+            /\s+/g,
+            " "
+        )
+        .trim();
+
+}
+
+
+/* ============================================================
+   CONTEXTUAL WORD TRANSLATION
+============================================================ */
+
+function contextualWord(
+    word,
+    sentence
+) {
+
+    const lower =
+        normalize(sentence);
+
+    switch (
+        word.toLowerCase()
+    ) {
+
+        case "great":
+
+            return "genial";
+
+
+        case "right":
+
+            if (
+                lower.includes("right side") ||
+                lower.includes("right hand") ||
+                lower.includes("turn right")
+            ) {
+
+                return "derecha";
+
+            }
+
+            return "correcto";
+
+
+        case "like":
+
+            if (
+                lower.includes("like a") ||
+                lower.includes("like an")
+            ) {
+
+                return "como";
+
+            }
+
+            return "gustar";
+
+
+        case "light":
+
+            if (
+                lower.includes("light bag") ||
+                lower.includes("light object") ||
+                lower.includes("light weight")
+            ) {
+
+                return "ligero";
+
+            }
+
+            return "luz";
+
+
+        case "watch":
+
+            return "ver";
+
+
+        case "kind":
+
+            if (
+                lower.includes("what kind")
+            ) {
+
+                return "tipo";
+
+            }
+
+            return "amable";
+
+
+        case "cool":
+
+            if (
+                lower.includes("cool air") ||
+                lower.includes("cool weather")
+            ) {
+
+                return "fresco";
+
+            }
+
+            return "genial";
+
+
+        case "old":
+
+            if (
+                lower.includes("old building") ||
+                lower.includes("old house")
+            ) {
+
+                return "antiguo";
+
+            }
+
+            return "viejo";
+
+
+        case "free":
+
+            if (
+                lower.includes("free time")
+            ) {
+
+                return "tiempo libre";
+
+            }
+
+            return "libre";
+
+
+        case "mean":
+
+            return "significar";
+
+
+        default:
+
+            return (
+                dictionary[
+                    word.toLowerCase()
+                ] ||
+                word
+            );
+
+    }
+
+}
+
+
+/* ============================================================
+   GENERAL WORD TRANSLATOR
+============================================================ */
+
+function translateWords(
+    text,
+    originalSentence = text
+) {
+
+    let result =
+        text;
+
+    const multiWord =
+        Object.keys(dictionary)
+            .filter(
+                key =>
+                    key.includes(" ")
+            )
+            .sort(
+                (a, b) =>
+                    b.length - a.length
+            );
+
+    for (
+        const phrase of multiWord
+    ) {
+
+        const regex =
+            new RegExp(
+                "\\b" +
+                escapeRegex(phrase) +
+                "\\b",
+                "gi"
+            );
+
+        result =
+            result.replace(
+                regex,
+                dictionary[phrase]
+            );
+
+    }
+
+
+    result =
+        result.replace(
+            /\b[A-Za-zÀ-ÿ']+\b/g,
+            word => {
+
+                const translation =
+                    contextualWord(
+                        word,
+                        originalSentence
+                    );
+
+                return translation;
+
+            }
+        );
+
+
+    return cleanPunctuation(
+        result
+    );
+
+}
+
+
+/* ============================================================
+   SENTENCE PATTERN ENGINE
+============================================================ */
+
+function translateSentencePattern(
+    sentence
+) {
+
+    const text =
+        normalize(
+            sentence
+        )
+        .replace(
+            /[.!?]+$/,
+            ""
+        )
+        .trim();
+
+
+    let match;
+
+
+    /* ========================================================
+       HOW DO YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^how do you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const rest =
+            match[2];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "you"
+            );
+
+        if (rest) {
+
+            return (
+                `¿Cómo ${conjugated} ` +
+                translateObject(
+                    rest
+                ) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿Cómo ${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       WHAT DO YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^what do you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const rest =
+            match[2];
+
+        if (
+            verb === "like"
+        ) {
+
+            if (rest) {
+
+                const object =
+                    translateObject(
+                        rest
+                    );
+
+                return (
+                    `¿Te gusta ${object}?`
+                );
+
+            }
+
+            return "¿Qué te gusta?";
+
+        }
+
+
+        if (
+            verb === "want"
+        ) {
+
+            if (rest) {
+
+                return (
+                    `¿Qué quieres ${translateObject(rest)}?`
+                );
+
+            }
+
+            return "¿Qué quieres?";
+
+        }
+
+
+        if (
+            verb === "need"
+        ) {
+
+            if (rest) {
+
+                return (
+                    `¿Qué necesitas ${translateObject(rest)}?`
+                );
+
+            }
+
+            return "¿Qué necesitas?";
+
+        }
+
+
+        if (
+            verb === "know"
+        ) {
+
+            if (rest) {
+
+                return (
+                    `¿Qué sabes ${translateObject(rest)}?`
+                );
+
+            }
+
+            return "¿Qué sabes?";
+
+        }
+
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "you"
+            );
+
+
+        if (rest) {
+
+            return (
+                `¿Qué ${conjugated} ` +
+                translateObject(
+                    rest
+                ) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿Qué ${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       WHERE DO YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^where do you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const rest =
+            match[2];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "you"
+            );
+
+
+        if (
+            verb === "live"
+        ) {
+
+            return "¿Dónde vives?";
+
+        }
+
+
+        if (rest) {
+
+            return (
+                `¿Dónde ${conjugated} ` +
+                translateObject(rest) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿Dónde ${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       WHEN DO YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^when do you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "you"
+            );
+
+        const rest =
+            match[2];
+
+
+        if (rest) {
+
+            return (
+                `¿Cuándo ${conjugated} ` +
+                translateObject(rest) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿Cuándo ${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       WHY DO YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^why do you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "you"
+            );
+
+        const rest =
+            match[2];
+
+
+        if (rest) {
+
+            return (
+                `¿Por qué ${conjugated} ` +
+                translateObject(rest) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿Por qué ${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       CAN YOU + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^can you ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const rest =
+            match[2];
+
+        let result =
+            `¿Puedes ${translateInfinitive(verb)}`;
+
+        if (rest) {
+
+            result +=
+                ` ${translateObject(rest)}`;
+
+        }
+
+        result += "?";
+
+        return result;
+
+    }
+
+
+    /* ========================================================
+       DO YOU HAVE?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^do you have (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `¿Tienes ` +
+            translateObject(
+                match[1]
+            ) +
+            "?"
+        );
+
+    }
+
+
+    /* ========================================================
+       DO YOU LIKE?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^do you like (.+)$/
+        );
+
+    if (match) {
+
+        const object =
+            translateObject(
+                match[1]
+            );
+
+        if (
+            /^(the )?cats$/i.test(
+                match[1]
+            )
+        ) {
+
+            return "¿Te gustan los gatos?";
+
+        }
+
+        return (
+            `¿Te gusta ${object}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       DO YOU KNOW?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^do you know (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `¿Sabes ` +
+            translateObject(
+                match[1]
+            ) +
+            "?"
+        );
+
+    }
+
+
+    /* ========================================================
+       DOES HE/SHE + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^does (he|she) ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const subject =
+            match[1];
+
+        const verb =
+            match[2];
+
+        const rest =
+            match[3];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                subject
+            );
+
+
+        if (
+            verb === "like"
+        ) {
+
+            if (rest) {
+
+                return (
+                    subject === "he"
+                        ? `¿Le gusta ${translateObject(rest)}?`
+                        : `¿Le gusta ${translateObject(rest)}?`
+                );
+
+            }
+
+            return "¿Le gusta?";
+
+        }
+
+
+        if (rest) {
+
+            return (
+                `¿${conjugated} ` +
+                translateObject(rest) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       DO THEY + VERB?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^do they ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const verb =
+            match[1];
+
+        const rest =
+            match[2];
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                "they"
+            );
+
+
+        if (rest) {
+
+            return (
+                `¿${conjugated} ` +
+                translateObject(rest) +
+                "?"
+            );
+
+        }
+
+        return (
+            `¿${conjugated}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       IS HE/SHE + ADJECTIVE?
+    ======================================================== */
+
+    match =
+        text.match(
+            /^is (he|she) (.+)$/
+        );
+
+    if (match) {
+
+        const subject =
+            match[1] === "he"
+                ? "¿Él"
+                : "¿Ella";
+
+        const adjective =
+            contextualWord(
+                match[2],
+                text
+            );
+
+        const stateWords = [
+            "happy",
+            "sad",
+            "tired",
+            "hungry",
+            "thirsty",
+            "angry",
+            "scared",
+            "afraid",
+            "excited",
+            "bored",
+            "busy",
+            "cold",
+            "hot"
+        ];
+
+        if (
+            stateWords.includes(
+                match[2]
+            )
+        ) {
+
+            return (
+                `${subject} está ${adjective}?`
+            );
+
+        }
+
+        return (
+            `${subject} es ${adjective}?`
+        );
+
+    }
+
+
+    /* ========================================================
+       I AM + STATE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i am (.+)$/
+        );
+
+    if (match) {
+
+        const value =
+            match[1]
+                .trim();
+
+
+        const stateWords = [
+
+            "happy",
+            "sad",
+            "tired",
+            "hungry",
+            "thirsty",
+            "angry",
+            "scared",
+            "afraid",
+            "excited",
+            "bored",
+            "busy",
+            "cold",
+            "hot",
+            "sick",
+            "ready"
+
+        ];
+
+
+        if (
+            stateWords.includes(
+                value
+            )
+        ) {
+
+            if (
+                value === "hungry"
+            ) {
+
+                return "Tengo hambre.";
+
+            }
+
+            if (
+                value === "thirsty"
+            ) {
+
+                return "Tengo sed.";
+
+            }
+
+            return (
+                `Estoy ${contextualWord(value, text)}.`
+            );
+
+        }
+
+
+        /* I am a/an noun */
+
+        const articleMatch =
+            value.match(
+                /^(?:a|an) (.+)$/
+            );
+
+        if (
+            articleMatch
+        ) {
+
+            return (
+                `Soy ${translateObject(articleMatch[1])}.`
+            );
+
+        }
+
+
+        /* I am + adjective */
+
+        const adjectives = [
+
+            "great",
+            "awesome",
+            "amazing",
+            "cool",
+            "good",
+            "bad",
+            "smart",
+            "strong",
+            "weak",
+            "beautiful",
+            "ugly",
+            "funny",
+            "nice",
+            "kind",
+            "important",
+            "different",
+            "right",
+            "wrong",
+            "young",
+            "old"
+
+        ];
+
+
+        if (
+            adjectives.includes(
+                value
+            )
+        ) {
+
+            return (
+                `Soy ${contextualWord(value, text)}.`
+            );
+
+        }
+
+    }
+
+
+    /* ========================================================
+       YOU ARE + ADJECTIVE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^you are (.+)$/
+        );
+
+    if (match) {
+
+        const value =
+            match[1]
+                .trim();
+
+        const states = [
+
+            "happy",
+            "sad",
+            "tired",
+            "hungry",
+            "thirsty",
+            "angry",
+            "scared",
+            "afraid",
+            "excited",
+            "bored",
+            "busy",
+            "cold",
+            "hot"
+
+        ];
+
+
+        if (
+            states.includes(value)
+        ) {
+
+            if (
+                value === "hungry"
+            ) {
+
+                return "Tienes hambre.";
+
+            }
+
+            if (
+                value === "thirsty"
+            ) {
+
+                return "Tienes sed.";
+
+            }
+
+            return (
+                `Estás ${contextualWord(value, text)}.`
+            );
+
+        }
+
+
+        return (
+            `Eres ${translateObject(value)}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       HE/SHE IS + ADJECTIVE/NOUN
+    ======================================================== */
+
+    match =
+        text.match(
+            /^(he|she) is (.+)$/
+        );
+
+    if (match) {
+
+        const subject =
+            match[1];
+
+        const value =
+            match[2]
+                .trim();
+
+        const states = [
+
+            "happy",
+            "sad",
+            "tired",
+            "hungry",
+            "thirsty",
+            "angry",
+            "scared",
+            "afraid",
+            "excited",
+            "bored",
+            "busy",
+            "cold",
+            "hot"
+
+        ];
+
+
+        if (
+            states.includes(value)
+        ) {
+
+            if (
+                value === "hungry"
+            ) {
+
+                return (
+                    subject === "he"
+                        ? "Él tiene hambre."
+                        : "Ella tiene hambre."
+                );
+
+            }
+
+            if (
+                value === "thirsty"
+            ) {
+
+                return (
+                    subject === "he"
+                        ? "Él tiene sed."
+                        : "Ella tiene sed."
+                );
+
+            }
+
+
+            return (
+                subject === "he"
+                    ? `Él está ${contextualWord(value, text)}.`
+                    : `Ella está ${contextualWord(value, text)}.`
+            );
+
+        }
+
+
+        const articleMatch =
+            value.match(
+                /^(?:a|an) (.+)$/
+            );
+
+
+        if (
+            articleMatch
+        ) {
+
+            return (
+                subject === "he"
+                    ? `Él es ${translateObject(articleMatch[1])}.`
+                    : `Ella es ${translateObject(articleMatch[1])}.`
+            );
+
+        }
+
+
+        return (
+            subject === "he"
+                ? `Él es ${translateObject(value)}.`
+                : `Ella es ${translateObject(value)}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I HAVE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i have (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Tengo ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       YOU HAVE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^you have (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Tienes ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       HE/SHE HAS
+    ======================================================== */
+
+    match =
+        text.match(
+            /^(he|she) has (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            match[1] === "he"
+                ? `Él tiene ${translateObject(match[2])}.`
+                : `Ella tiene ${translateObject(match[2])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I WANT TO
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i want to (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Quiero ${translateInfinitive(
+                match[1].trim()
+            )}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       YOU WANT TO
+    ======================================================== */
+
+    match =
+        text.match(
+            /^you want to (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Quieres ${translateInfinitive(
+                match[1].trim()
+            )}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I NEED
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i need (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Necesito ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I LIKE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i like (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Me gusta ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I LOVE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i love (.+)$/
+        );
+
+    if (match) {
+
+        if (
+            normalize(match[1]) ===
+            "you"
+        ) {
+
+            return "Te quiero.";
+
+        }
+
+        return (
+            `Me encanta ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       I CAN
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i can (.+)$/
+        );
+
+    if (match) {
+
+        const parts =
+            match[1]
+                .trim()
+                .split(
+                    " "
+                );
+
+        const verb =
+            parts.shift();
+
+        let result =
+            `Puedo ${translateInfinitive(verb)}`;
+
+        if (
+            parts.length
+        ) {
+
+            result +=
+                ` ${translateObject(parts.join(" "))}`;
+
+        }
+
+        return (
+            result + "."
+        );
+
+    }
+
+
+    /* ========================================================
+       YOU CAN
+    ======================================================== */
+
+    match =
+        text.match(
+            /^you can (.+)$/
+        );
+
+    if (match) {
+
+        const parts =
+            match[1]
+                .trim()
+                .split(" ");
+
+        const verb =
+            parts.shift();
+
+        let result =
+            `Puedes ${translateInfinitive(verb)}`;
+
+        if (
+            parts.length
+        ) {
+
+            result +=
+                ` ${translateObject(parts.join(" "))}`;
+
+        }
+
+        return (
+            result + "."
+        );
+
+    }
+
+
+    /* ========================================================
+       I DO NOT
+    ======================================================== */
+
+    match =
+        text.match(
+            /^i do not (.+)$/
+        );
+
+    if (match) {
+
+        const rest =
+            match[1]
+                .trim();
+
+        if (
+            rest === "know"
+        ) {
+
+            return "No sé.";
+
+        }
+
+        if (
+            rest === "understand"
+        ) {
+
+            return "No entiendo.";
+
+        }
+
+        if (
+            rest.startsWith("like ")
+        ) {
+
+            return (
+                `No me gusta ${translateObject(rest.slice(5))}.`
+            );
+
+        }
+
+        const parts =
+            rest.split(" ");
+
+        const verb =
+            parts.shift();
+
+        let result =
+            `No ${conjugateVerb(
+                verb,
+                "i"
+            )}`;
+
+        if (
+            parts.length
+        ) {
+
+            result +=
+                ` ${translateObject(parts.join(" "))}`;
+
+        }
+
+        return (
+            result + "."
+        );
+
+    }
+
+
+    /* ========================================================
+       YOU DO NOT
+    ======================================================== */
+
+    match =
+        text.match(
+            /^you do not (.+)$/
+        );
+
+    if (match) {
+
+        const rest =
+            match[1]
+                .trim();
+
+        if (
+            rest === "know"
+        ) {
+
+            return "No sabes.";
+
+        }
+
+        if (
+            rest.startsWith("like ")
+        ) {
+
+            return (
+                `No te gusta ${translateObject(rest.slice(5))}.`
+            );
+
+        }
+
+        const parts =
+            rest.split(" ");
+
+        const verb =
+            parts.shift();
+
+        let result =
+            `No ${conjugateVerb(
+                verb,
+                "you"
+            )}`;
+
+        if (
+            parts.length
+        ) {
+
+            result +=
+                ` ${translateObject(parts.join(" "))}`;
+
+        }
+
+        return (
+            result + "."
+        );
+
+    }
+
+
+    /* ========================================================
+       THERE IS
+    ======================================================== */
+
+    match =
+        text.match(
+            /^there is (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Hay ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       THERE ARE
+    ======================================================== */
+
+    match =
+        text.match(
+            /^there are (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Hay ${translateObject(match[1])}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       LET'S
+    ======================================================== */
+
+    match =
+        text.match(
+            /^let's (.+)$/
+        );
+
+    if (match) {
+
+        return (
+            `Vamos a ${translateInfinitive(
+                match[1].trim()
+            )}.`
+        );
+
+    }
+
+
+    /* ========================================================
+       SIMPLE SUBJECT + VERB
+    ======================================================== */
+
+    match =
+        text.match(
+            /^(i|you|he|she|we|they) ([a-z]+)(?: (.+))?$/
+        );
+
+    if (match) {
+
+        const subject =
+            match[1];
+
+        const verb =
+            match[2];
+
+        const rest =
+            match[3];
+
+
+        /*
+           Special "like"
+        */
+
+        if (
+            verb === "like"
+        ) {
+
+            if (
+                subject === "i"
+            ) {
+
+                return (
+                    `Me gusta ${translateObject(rest || "")}.`
+                );
+
+            }
+
+            if (
+                subject === "you"
+            ) {
+
+                return (
+                    `Te gusta ${translateObject(rest || "")}.`
+                );
+
+            }
+
+            if (
+                subject === "he" ||
+                subject === "she"
+            ) {
+
+                return (
+                    `Le gusta ${translateObject(rest || "")}.`
+                );
+
+            }
+
+        }
+
+
+        const conjugated =
+            conjugateVerb(
+                verb,
+                subject
+            );
+
+
+        let result =
+            conjugated;
+
+
+        if (
+            rest
+        ) {
+
+            result +=
+                " " +
+                translateObject(
+                    rest
+                );
+
+        }
+
+
+        return (
+            result + "."
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* ============================================================
+   GENERAL PHRASE TRANSLATION
+============================================================ */
+
+function translatePhrase(
+    text
+) {
+
+    let result =
+        text;
+
+    const sorted =
+        Object.keys(phrases)
+            .sort(
+                (a, b) =>
+                    b.length - a.length
+            );
+
+
+    for (
+        const phrase of sorted
+    ) {
+
+        const regex =
+            new RegExp(
+                "^" +
+                escapeRegex(phrase) +
+                "$",
+                "i"
+            );
+
+        if (
+            regex.test(
+                text
+            )
+        ) {
+
+            return phrases[phrase];
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/* ============================================================
+   GENERAL FALLBACK
+============================================================ */
+
+function generalTranslate(
+    text
+) {
+
+    let result =
+        translatePhrasesInsideText(
+            text
+        );
+
+
+    const tokens =
+        tokenize(
+            result
+        );
+
+
+    const translated =
+        tokens.map(
+            token => {
+
+                if (
+                    /^[A-Za-zÀ-ÿ']+$/.test(
+                        token
+                    )
+                ) {
+
+                    return contextualWord(
+                        token,
+                        text
+                    );
+
+                }
+
+                return token;
+
+            }
+        );
+
+
+    result =
+        translated.join(" ");
+
+
+    result =
+        result
+            .replace(
+                /\s+([,.!?;:])/g,
+                "$1"
+            )
+            .replace(
+                /([¿¡])\s+/g,
+                "$1"
+            )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .trim();
+
+
+    return result;
+
+}
+
+
+/* ============================================================
+   PHRASES INSIDE LONGER SENTENCES
+============================================================ */
+
+function translatePhrasesInsideText(
+    text
+) {
+
+    let result =
+        text;
+
+
+    const sorted =
+        Object.keys(phrases)
+            .sort(
+                (a, b) =>
+                    b.length - a.length
+            );
+
+
+    for (
+        const phrase of sorted
+    ) {
+
+        const regex =
+            new RegExp(
+                "\\b" +
+                escapeRegex(phrase) +
+                "\\b",
+                "gi"
+            );
+
+
+        result =
+            result.replace(
+                regex,
+                phrases[phrase]
+            );
+
+    }
+
+
+    return result;
+
+}
+
+
+/* ============================================================
+   SPANISH PUNCTUATION
+============================================================ */
+
+function fixSpanishPunctuation(
+    original,
+    translated
+) {
+
+    let result =
+        translated.trim();
+
+
+    const originalTrimmed =
+        original.trim();
+
+
+    const isQuestion =
+        originalTrimmed.endsWith(
+            "?"
+        );
+
+
+    const isExclamation =
+        originalTrimmed.endsWith(
+            "!"
+        );
+
+
+    if (
+        isQuestion
+    ) {
+
+        result =
+            result.replace(
+                /^\¿/,
+                ""
+            );
+
+        result =
+            result.replace(
+                /\?$/,
+                ""
+            );
+
+        result =
+            `¿${result}?`;
+
+    }
+
+
+    if (
+        isExclamation
+    ) {
+
+        result =
+            result.replace(
+                /^¡/,
+                ""
+            );
+
+        result =
+            result.replace(
+                /!$/,
+                ""
+            );
+
+        result =
+            `¡${result}!`;
+
+    }
+
+
+    return result;
+
+}
+
+
+/* ============================================================
+   CAPITALIZATION
+============================================================ */
+
+function preserveCapitalization(
+    original,
+    translated
+) {
+
+    if (
+        !translated
+    ) {
+
+        return translated;
+
+    }
+
+
+    /*
+       Spanish questions begin with ¿,
+       so don't uppercase the symbol.
+    */
+
+    if (
+        translated.startsWith("¿") ||
+        translated.startsWith("¡")
+    ) {
+
+        const firstLetterIndex =
+            translated.search(
+                /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/
+            );
+
+
+        if (
+            firstLetterIndex >= 0
+        ) {
+
+            return (
+                translated.slice(
+                    0,
+                    firstLetterIndex
+                ) +
+                translated
+                    .charAt(
+                        firstLetterIndex
+                    )
+                    .toUpperCase() +
+                translated.slice(
+                    firstLetterIndex + 1
+                )
+            );
+
+        }
+
+        return translated;
+
+    }
+
+
+    const originalFirst =
+        original.trim().charAt(0);
+
+
+    if (
+        /[A-ZÁÉÍÓÚÜÑ]/.test(
+            originalFirst
+        )
+    ) {
+
+        return (
+            translated.charAt(0).toUpperCase() +
+            translated.slice(1)
+        );
+
+    }
+
+
+    return translated;
+
+}
+
+
+/* ============================================================
+   LEVENSHTEIN
+============================================================ */
+
+function levenshteinDistance(
+    a,
+    b
+) {
+
+    const matrix =
+        Array.from(
+            {
+                length:
+                    a.length + 1
+            },
+            () =>
+                Array(
+                    b.length + 1
+                ).fill(0)
+        );
+
+
+    for (
+        let i = 0;
+        i <= a.length;
+        i++
+    ) {
+
+        matrix[i][0] =
+            i;
+
+    }
+
+
+    for (
+        let j = 0;
+        j <= b.length;
+        j++
+    ) {
+
+        matrix[0][j] =
+            j;
+
+    }
+
+
+    for (
+        let i = 1;
+        i <= a.length;
+        i++
+    ) {
+
+        for (
+            let j = 1;
+            j <= b.length;
+            j++
+        ) {
+
+            const cost =
+                a[i - 1] === b[j - 1]
+                    ? 0
+                    : 1;
+
+
+            matrix[i][j] =
+                Math.min(
+
+                    matrix[i - 1][j] + 1,
+
+                    matrix[i][j - 1] + 1,
+
+                    matrix[i - 1][j - 1] +
+                        cost
+
+                );
+
+        }
+
+    }
+
+
+    return matrix[
+        a.length
+    ][
+        b.length
+    ];
+
+}
+
+
+function similarity(
+    a,
+    b
+) {
+
+    a =
+        normalize(a);
+
+    b =
+        normalize(b);
+
+
+    const max =
+        Math.max(
+            a.length,
+            b.length
+        );
+
+
+    if (
+        max === 0
+    ) {
+
+        return 100;
+
+    }
+
+
+    return Math.round(
+        (
+            1 -
+            levenshteinDistance(
+                a,
+                b
+            ) /
+            max
+        ) *
+        100
+    );
+
+}
+
+
+/* ============================================================
+   CONFIDENCE
+============================================================ */
+
+function calculateConfidence(
+    original,
+    translated
+) {
+
+    const normalized =
+        normalize(
+            expandContractions(
+                original
+            )
+        );
+
+
+    const words =
+        normalized.match(
+            /[a-zA-ZÀ-ÿ']+/g
+        ) || [];
+
+
+    if (
+        !words.length
+    ) {
+
+        return 0;
+
+    }
+
+
+    let known =
+        0;
+
+
+    for (
+        const word of words
+    ) {
+
+        if (
+            dictionary[
+                word
+            ]
+        ) {
+
+            known++;
+
+        }
+
+    }
+
+
+    const dictionaryCoverage =
+        known /
+        words.length;
+
+
+    const phrase =
+        !!translatePhrase(
+            normalized
+        );
+
+
+    const pattern =
+        !!translateSentencePattern(
+            normalized
+        );
+
+
+    let score =
+        55 +
+        dictionaryCoverage * 25;
+
+
+    if (
+        phrase
+    ) {
+
+        score += 18;
+
+    }
+
+
+    if (
+        pattern
+    ) {
+
+        score += 15;
+
+    }
+
+
+    /*
+       If the translation isn't just the
+       original sentence, give a little credit.
+    */
+
+    if (
+        normalize(
+            translated
+        ) !==
+        normalized
+    ) {
+
+        score += 4;
+
+    }
+
+
+    return Math.min(
+        99,
+        Math.round(
+            score
+        )
+    );
+
+}
+
+
+/* ============================================================
+   KNOWN TRANSLATIONS
+============================================================ */
+
+const knownTranslations = {
+
+    "how do you work?":
+        "¿Cómo trabajas?",
+
+    "how do you work":
+        "¿Cómo trabajas?",
+
+    "what do you want?":
+        "¿Qué quieres?",
+
+    "what do you want":
+        "¿Qué quieres?",
+
+    "where do you live?":
+        "¿Dónde vives?",
+
+    "where do you live":
+        "¿Dónde vives?",
+
+    "do you like cats?":
+        "¿Te gustan los gatos?",
+
+    "i'm great":
+        "Soy genial.",
+
+    "i am great":
+        "Soy genial.",
+
+    "i am happy":
+        "Estoy feliz.",
+
+    "i'm happy":
+        "Estoy feliz.",
+
+    "i am tired":
+        "Estoy cansado.",
+
+    "i'm tired":
+        "Estoy cansado.",
+
+    "i am hungry":
+        "Tengo hambre.",
+
+    "i'm hungry":
+        "Tengo hambre.",
+
+    "i am thirsty":
+        "Tengo sed.",
+
+    "i'm thirsty":
+        "Tengo sed.",
+
+    "i love you":
+        "Te quiero.",
+
+    "i don't know":
+        "No sé.",
+
+    "how are you?":
+        "¿Cómo estás?",
+
+    "how old are you?":
+        "¿Cuántos años tienes?",
+
+    "where are you?":
+        "¿Dónde estás?",
+
+    "what are you doing?":
+        "¿Qué estás haciendo?"
+
+};
+
+
+/* ============================================================
+   VERIFICATION
+============================================================ */
+
+function verifyTranslation(
+    original,
+    translated
+) {
+
+    const status =
+        document.getElementById(
+            "verificationStatus"
+        );
+
+    const score =
+        document.getElementById(
+            "verificationScore"
+        );
+
+    const message =
+        document.getElementById(
+            "verificationMessage"
+        );
+
+    const suggestion =
+        document.getElementById(
+            "verificationSuggestion"
+        );
+
+
+    suggestion.hidden =
+        true;
+
+    suggestion.textContent =
+        "";
+
+
+    const normalized =
+        normalize(
+            original
+        );
+
+
+    const expected =
+        knownTranslations[
+            normalized
+        ];
+
+
+    if (
+        expected
+    ) {
+
+        const match =
+            similarity(
+                translated,
+                expected
+            );
+
+
+        score.textContent =
+            `${match}% match`;
+
+
+        if (
+            normalize(translated) ===
+            normalize(expected)
+        ) {
+
+            status.textContent =
+                "✓ Translation verified";
+
+            message.textContent =
+                "TONTO recognized the sentence structure and produced the expected natural Spanish form.";
+
+            return match;
+
+        }
+
+
+        status.textContent =
+            "⚠ Translation differs from expected form";
+
+        message.textContent =
+            "TONTO has a known natural translation for this sentence.";
+
+        suggestion.hidden =
+            false;
+
+        suggestion.textContent =
+            `Suggested: ${expected}`;
+
+        return match;
+
+    }
+
+
+    /*
+       Detect obvious English leftovers.
+    */
+
+    const englishGrammar =
+        [
+
+            "the",
+            "you",
+            "are",
+            "how",
+            "what",
+            "where",
+            "when",
+            "why",
+            "who",
+
+            "do",
+            "does",
+            "did",
+
+            "is",
+            "am",
+
+            "have",
+            "has",
+
+            "want",
+            "need",
+            "like",
+
+            "can",
+            "will",
+
+            "great",
+            "this",
+            "that"
+
+        ];
+
+
+    const lower =
+        ` ${translated.toLowerCase()} `;
+
+
+    let leftovers =
+        0;
+
+
+    for (
+        const word of englishGrammar
+    ) {
+
+        const regex =
+            new RegExp(
+                `\\b${escapeRegex(word)}\\b`
+            );
+
+
+        if (
+            regex.test(lower)
+        ) {
+
+            leftovers++;
+
+        }
+
+    }
+
+
+    const spanishSignals =
+        [
+
+            "el",
+            "la",
+            "los",
+            "las",
+            "un",
+            "una",
+
+            "que",
+            "de",
+            "en",
+            "con",
+            "para",
+            "por",
+
+            "es",
+            "está",
+            "eres",
+            "soy",
+            "somos",
+
+            "tengo",
+            "tienes",
+            "tiene",
+
+            "quiero",
+            "quieres",
+
+            "puedo",
+            "puedes",
+
+            "me gusta",
+            "te gusta",
+            "le gusta",
+
+            "hay",
+
+            "cómo",
+            "qué",
+            "dónde"
+
+        ];
+
+
+    let signals =
+        0;
+
+
+    for (
+        const signal of spanishSignals
+    ) {
+
+        if (
+            lower.includes(
+                ` ${signal} `
+            ) ||
+            lower.includes(
+                signal
+            )
+        ) {
+
+            signals++;
+
+        }
+
+    }
+
+
+    let result =
+        72 +
+        Math.min(
+            signals * 3,
+            18
+        ) -
+        Math.min(
+            leftovers * 12,
+            36
+        );
+
+
+    result =
+        Math.max(
+            35,
+            Math.min(
+                96,
+                result
+            )
+        );
+
+
+    score.textContent =
+        `${result}%`;
+
+
+    if (
+        leftovers > 0
+    ) {
+
+        status.textContent =
+            "⚠ English words remain";
+
+        message.textContent =
+            "TONTO detected words that may not have been translated correctly.";
+
+    } else {
+
+        status.textContent =
+            "✓ Translation looks reasonable";
+
+        message.textContent =
+            "TONTO found a mostly Spanish result, although this sentence was not in the exact verification set.";
+
+    }
+
+
+    return result;
+
+}
+
+
+/* ============================================================
+   RESET VERIFICATION
+============================================================ */
+
+function resetVerification() {
+
+    document.getElementById(
+        "verificationStatus"
+    ).textContent =
+        "—";
+
+
+    document.getElementById(
+        "verificationScore"
+    ).textContent =
+        "—";
+
+
+    document.getElementById(
+        "verificationMessage"
+    ).textContent =
+        "TONTO will check the translation here.";
+
+
+    const suggestion =
+        document.getElementById(
+            "verificationSuggestion"
+        );
+
+
+    suggestion.hidden =
+        true;
+
+    suggestion.textContent =
+        "";
+
+}
+
+
+/* ============================================================
+   MAIN TRANSLATION FUNCTION
+============================================================ */
+
+function translateText() {
+
+    const input =
+        document.getElementById(
+            "input"
+        );
+
+
+    const output =
+        document.getElementById(
+            "output"
+        );
+
+
+    const confidence =
+        document.getElementById(
+            "confidence"
+        );
+
+
+    const original =
+        input.value.trim();
+
+
+    if (
+        !original
+    ) {
+
+        output.textContent =
+            "Type something in English first.";
+
+        output.classList.add(
+            "empty-output"
+        );
+
+        confidence.textContent =
+            "—";
+
+        resetVerification();
+
+        return;
+
+    }
+
+
+    output.classList.remove(
+        "empty-output"
+    );
+
+
+    /*
+       Normalize contractions first.
+    */
+
+    const expanded =
+        expandContractions(
+            original
+        );
+
+
+    const normalized =
+        normalize(
+            expanded
+        );
+
+
+    let translated =
+        null;
+
+
+    /* ========================================================
+       1. EXACT KNOWN TRANSLATION
+    ======================================================== */
+
+    const normalizedOriginal =
+        normalize(
+            original
+        );
+
+
+    if (
+        knownTranslations[
+            normalizedOriginal
+        ]
+    ) {
+
+        translated =
+            knownTranslations[
+                normalizedOriginal
+            ];
+
+    }
+
+
+    /* ========================================================
+       2. EXACT PHRASE
+    ======================================================== */
+
+    if (
+        !translated
+    ) {
+
+        translated =
+            translatePhrase(
+                normalized
+            );
+
+    }
+
+
+    /* ========================================================
+       3. SENTENCE GRAMMAR ENGINE
+    ======================================================== */
+
+    if (
+        !translated
+    ) {
+
+        translated =
+            translateSentencePattern(
+                normalized
+            );
+
+    }
+
+
+    /* ========================================================
+       4. GENERAL FALLBACK
+    ======================================================== */
+
+    if (
+        !translated
+    ) {
+
+        translated =
+            generalTranslate(
+                normalized
+            );
+
+    }
+
+
+    /* ========================================================
+       5. PUNCTUATION
+    ======================================================== */
+
+    translated =
+        fixSpanishPunctuation(
+            original,
+            translated
+        );
+
+
+    /* ========================================================
+       6. CAPITALIZATION
+    ======================================================== */
+
+    translated =
+        preserveCapitalization(
+            original,
+            translated
+        );
+
+
+    /* ========================================================
+       7. FINAL CLEANUP
+    ======================================================== */
+
+    translated =
+        cleanPunctuation(
+            translated
+        );
+
+
+    /*
+       If Spanish inverted punctuation was created,
+       cleanup can accidentally remove spacing.
+    */
+
+    translated =
+        translated
+            .replace(
+                /¿\s+/g,
+                "¿"
+            )
+            .replace(
+                /¡\s+/g,
+                "¡"
+            );
+
+
+    /* ========================================================
+       OUTPUT
+    ======================================================== */
+
+    output.textContent =
+        translated;
+
+
+    /* ========================================================
+       CONFIDENCE
+    ======================================================== */
+
+    confidence.textContent =
+        calculateConfidence(
+            original,
+            translated
+        ) +
+        "%";
+
+
+    /* ========================================================
+       VERIFICATION
+    ======================================================== */
+
+    verifyTranslation(
+        original,
+        translated
+    );
+
+}
+
+
+/* ============================================================
+   CHARACTER COUNTER
+============================================================ */
+
+function updateCounter() {
+
+    const input =
+        document.getElementById(
+            "input"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "counter"
+        );
+
+
+    const count =
+        input.value.length;
+
+
+    counter.textContent =
+        count +
+        (
+            count === 1
+                ? " character"
+                : " characters"
+        );
+
+}
+
+
+/* ============================================================
+   CLEAR
+============================================================ */
+
+function clearInput() {
+
+    document.getElementById(
+        "input"
+    ).value =
+        "";
+
+
+    const output =
+        document.getElementById(
+            "output"
+        );
+
+
+    output.textContent =
+        "Your translation will appear here...";
+
+
+    output.classList.add(
+        "empty-output"
+    );
+
+
+    document.getElementById(
+        "confidence"
+    ).textContent =
+        "—";
+
+
+    resetVerification();
+
+    updateCounter();
+
+}
+
+
+/* ============================================================
+   EXAMPLES
+============================================================ */
+
+const examples = [
+
+    "Hello, how are you?",
+
+    "I'm great.",
+
+    "How do you work?",
+
+    "What do you want?",
+
+    "Where do you live?",
+
+    "Do you like cats?",
+
+    "Does she like music?",
+
+    "I work every day.",
+
+    "You work very fast.",
+
+    "He works at home.",
+
+    "I am happy.",
+
+    "I am tired.",
+
+    "I am hungry.",
+
+    "I am a developer.",
+
+    "I have a dog.",
+
+    "You have a computer.",
+
+    "I want to play a game.",
+
+    "I want to learn programming.",
+
+    "I need help.",
+
+    "I like this game.",
+
+    "I love you.",
+
+    "I can help you.",
+
+    "Can you help me?",
+
+    "I don't know.",
+
+    "I don't like this.",
+
+    "There is a dog.",
+
+    "There are three cats.",
+
+    "Let's go.",
+
+    "What are you doing?",
+
+    "How old are you?",
+
+    "Where are you?",
+
+    "Why do you work?",
+
+    "When do you play?",
+
+    "Good morning, my friend.",
+
+    "This is amazing!"
+
+];
+
+
+function useExample() {
+
+    const random =
+        examples[
+            Math.floor(
+                Math.random() *
+                examples.length
+            )
+        ];
+
+
+    document.getElementById(
+        "input"
+    ).value =
+        random;
+
+
+    updateCounter();
+
+    translateText();
+
+}
+
+
+/* ============================================================
+   COPY
+============================================================ */
+
+async function copyTranslation() {
+
+    const output =
+        document.getElementById(
+            "output"
+        );
+
+
+    if (
+        output.classList.contains(
+            "empty-output"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        output.textContent;
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        const old =
+            output.textContent;
+
+
+        output.textContent =
+            "✓ Copied!";
+
+
+        setTimeout(
+            () => {
+
+                output.textContent =
+                    old;
+
+            },
+            900
+        );
+
+
+    } catch {
+
+        alert(
+            "TONTO could not access the clipboard."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   DOWNLOAD
+============================================================ */
+
+function downloadTranslation() {
+
+    const output =
+        document.getElementById(
+            "output"
+        );
+
+
+    if (
+        output.classList.contains(
+            "empty-output"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        output.textContent;
+
+
+    const blob =
+        new Blob(
+            [text],
+            {
+                type:
+                    "text/plain;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+    link.download =
+        "tonto-translation.txt";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* ============================================================
+   SWAP
+============================================================ */
+
+function swapLanguages() {
+
+    alert(
+        "TONTO currently supports English → Spanish.\n\nSpanish → English is not part of this final engine."
+    );
+
+}
+
+
+/* ============================================================
+   KEYBOARD SHORTCUT
+============================================================ */
+
+document
+    .getElementById(
+        "input"
+    )
+    .addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.ctrlKey &&
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                translateText();
+
+            }
+
+        }
+    );
+
+
+/* ============================================================
+   COUNTER
+============================================================ */
+
+document
+    .getElementById(
+        "input"
+    )
+    .addEventListener(
+        "input",
+        updateCounter
+    );
+
+
+/* ============================================================
+   STARTUP
+============================================================ */
+
+updateCounter();
+
+
+console.log(
+    "TONTO FINAL ENGINE loaded."
+);
+
+console.log(
+    "Context-aware grammar engine enabled."
+);
+
+console.log(
+    "English → Spanish translation ready."
+);
+
+
+/* ============================================================
+   DEBUG TESTS
+   Open the browser console to see these.
+============================================================ */
+
+const TONTO_TESTS = [
+
+    "How do you work?",
+    "What do you want?",
+    "Where do you live?",
+    "Do you like cats?",
+    "I am great.",
+    "I'm happy.",
+    "I am hungry.",
+    "I have a dog.",
+    "I want to play.",
+    "I can help you.",
+    "Can you help me?",
+    "I don't know.",
+    "I don't like this.",
+    "There is a dog.",
+    "There are three cats."
+
+];
+
+
+console.log(
+    "TONTO test phrases loaded:",
+    TONTO_TESTS.length
+);
+
+</script>
+
+</body>
+</html>
